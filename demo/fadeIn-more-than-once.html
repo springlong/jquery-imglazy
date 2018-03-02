@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>图片懒加载-淡入效果（多次函数执行）</title>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script src="js/jquery.snippet.min.js"></script>
+    <script src="../src/jquery.imglazy.js"></script>
+    <link rel="stylesheet" href="css/codeView.css">
+    <style>
+    	*{padding:0;margin:0;}
+
+        h1{font-size:24px;line-height:2em;text-align:center;}
+        #header{width:800px;margin:20px auto;}
+        #header .jsCodeNum{padding:10px;border:1px solid #ddd;border-radius:4px;margin-top:20px;background:#fdfdfd;font-size:14px;font-family:"Courier New";text-align:center;}
+        #header p{font-size:14px;line-height:1.5em;padding:20px;}
+
+        #container{overflow:hidden;width:500px;margin:40px auto 0;}
+        #container ul{overflow:hidden;padding:20px 0;margin-bottom:100px;}
+        #container ul li{float:left;display:inline;width:150px;height:200px;margin:60px 0 0 65px;background:#999;}
+        #container ul li img{display:block;width:100%;height:100%;}
+
+        .snippet-container{width: 500px;margin:0 auto;}
+
+        #box1{background-color: green;}
+        #box2{background-color: orange;}
+        #box3{background-color: gray;}
+        #box4{background-color: #469D98;}
+    </style>
+</head>
+<body>
+<div id="header">
+    <h1>图片懒加载：淡入效果（多次函数执行）</h1>
+    <pre class="jsCode">
+$.imgLazy({ effect: 'fadeIn' });
+
+var $win = $(window),
+    $container = $('#container'),
+    floor = 1;
+
+$win.on('scroll', function(){
+    var docHeight = $(document).height(),
+        viewHeight = $win.height(),
+        scrollTop = $win.scrollTop();
+
+    if(scrollTop + viewHeight - docHeight === 0 && floor &lt; 4){
+        var htmlStr = '', i = 0;
+        floor++;
+        for(; i &lt; 10; ){
+            htmlStr += '&lt;li>&lt;img src="images/default.png" data-src="images/book-' + floor + '-' + (++i) + '.jpg" alt="" />&lt;/li>';
+        }
+        $container.append('&lt;ul id="box' + floor + '">' + htmlStr + '&lt;/ul>');
+        $.imgLazy();
+    }
+});
+</pre>
+</div>
+<div id="container">
+    <ul id="box1">
+        <li><img src="images/default.png" data-src="images/book-1-1.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-1-2.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-1-3.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-1-4.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-1-5.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-1-6.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-1-7.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-1-8.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-1-9.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-1-10.jpg" alt="" /></li>
+    </ul><!--
+    <ul id="box2">
+        <li><img src="images/default.png" data-src="images/book-2-1.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-2-2.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-2-3.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-2-4.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-2-5.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-2-6.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-2-7.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-2-8.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-2-9.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-2-10.jpg" alt="" /></li>
+    </ul>
+    <ul id="box3">
+        <li><img src="images/default.png" data-src="images/book-3-1.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-3-2.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-3-3.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-3-4.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-3-5.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-3-6.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-3-7.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-3-8.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-3-9.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-3-10.jpg" alt="" /></li>
+    </ul>
+    <ul id="box4">
+        <li><img src="images/default.png" data-src="images/book-4-1.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-4-2.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-4-3.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-4-4.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-4-5.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-4-6.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-4-7.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-4-8.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-4-9.jpg" alt="" /></li>
+        <li><img src="images/default.png" data-src="images/book-4-10.jpg" alt="" /></li>
+    </ul> -->
+</div>
+<script type="text/javascript">
+    jQuery(function($) {
+        
+        $.imgLazy({ effect: 'fadeIn' });
+
+        var $win = $(window),
+            $container = $('#container'),
+            floor = 1;
+
+        $win.on('scroll', function(){
+            var docHeight = $(document).height(),
+                viewHeight = $win.height(),
+                scrollTop = $win.scrollTop();
+
+            if(scrollTop + viewHeight - docHeight === 0 && floor < 4){
+                var htmlStr = '', i = 0;
+                floor++;
+                for(; i < 10; ){
+                    htmlStr += '<li><img src="images/default.png" data-src="images/book-' + floor + '-' + (++i) + '.jpg" alt="" /></li>';
+                }
+                $container.append('<ul id="box' + floor + '">' + htmlStr + '</ul>');
+                $.imgLazy();
+            }
+        });
+
+
+        $("pre.jsCode").snippet("javascript", {style: "custom_js", showNum: false});
+    });
+</script>
+</body>
+</html>
