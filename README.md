@@ -30,13 +30,14 @@
 
 建议使用控制台中的网络面板来监测懒加载图片的请求。
 
-1. [无效果](http://www.fedlife.cn/demo/jquery/jquery-imglazy/none.html)
-2. [淡入效果](http://www.fedlife.cn/demo/jquery/jquery-imglazy/fadeIn.html)
-3. [淡入效果（提前加载）](http://www.fedlife.cn/demo/jquery/jquery-imglazy/fadeIn-threshold.html)
-4. [淡入效果（可视窗口）](http://www.fedlife.cn/demo/jquery/jquery-imglazy/fadeIn-viewport.html)
-5. [淡入效果（可视窗口 + 提前加载）](http://www.fedlife.cn/demo/jquery/jquery-imglazy/fadeIn-viewport-threshold.html)
-6. [淡入效果（可视窗口 + 延迟处理）](http://www.fedlife.cn/demo/jquery/jquery-imglazy/fadeIn-viewport-timeout.html)
-7. [淡入效果（多次函数调用）](http://www.fedlife.cn/demo/jquery/jquery-imglazy/fadeIn-more-than-once.html)
+1. [无效果](//htmlpreview.github.io/?https://github.com/springlong/jquery-imglazy/blob/master/demo/none.html)
+2. [淡入效果](//htmlpreview.github.io/?https://github.com/springlong/jquery-imglazy/blob/master/demo/fadeIn.html)
+3. [淡入效果（提前加载）](//htmlpreview.github.io/?https://github.com/springlong/jquery-imglazy/blob/master/demo/fadeIn-threshold.html)
+4. [淡入效果（可视窗口）](//htmlpreview.github.io/?https://github.com/springlong/jquery-imglazy/blob/master/demo/fadeIn-viewport.html)
+5. [淡入效果（可视窗口 + 提前加载）](//htmlpreview.github.io/?https://github.com/springlong/jquery-imglazy/blob/master/demo/fadeIn-viewport-threshold.html)
+6. [淡入效果（可视窗口 + 延迟处理）](//htmlpreview.github.io/?https://github.com/springlong/jquery-imglazy/blob/master/demo/fadeIn-viewport-timeout.html)
+7. [淡入效果（多次函数调用）](//htmlpreview.github.io/?https://github.com/springlong/jquery-imglazy/blob/master/demo/fadeIn-more-than-once.html)
+8. [背景图片](//htmlpreview.github.io/?https://github.com/springlong/jquery-imglazy/blob/master/demo/background.html)
 
 
 ## HTML代码
@@ -69,7 +70,7 @@ $.imgLazy();  //使用默认参数进行处理
 	src: "data-src",  			// 懒加载图片的真实url的保存属性。
 	effect: "none",   			// 用来指定加载图片时的效果，默认为"none"——即无效果，另外"fadeIn"——表示淡入效果。
 	threshold: 0, 				// 设置一个阀值，用来指定可以提前加载多少范围之外的图片。默认为0——不提前加载。当viewport为true时，表示前后两个方向都会做提前加载。
-	thresholdBefore: 0, 				// 设置一个阀值，当viewport为true时，用来单独指定可以向前加载多少范围之外的图片。默认为0——不提前加载。
+	thresholdBefore: 0, 		// 设置一个阀值，当viewport为true时，用来单独指定可以向前加载多少范围之外的图片。默认为0——不提前加载。
 	timeout: 0, 				// 懒加载行为响应的延迟时间，默认为0——表示不做延迟处理。
 	viewport: false 			// 是否仅加载可视窗口之内的图片，默认为false——表示将加载可视窗口内以及位于之前的所有图片。
 }
@@ -102,7 +103,7 @@ $.imgLazy({ viewport: true, timeout: 20 });
 
 该参数的一个主要使用场景，需要与 `viewport` 参数搭配使用才能达到预期效果——就是当页面快速从顶部滑行到底部后，由于设置了延迟响应，因此位于页面中间的图片并不会被加载，因此进一步加快了位于底部图片的加载响应时间，同时也避免了中间部分的图片被加载的过程（可能用户并不会浏览到这些图片）。
 
-关于该特性的具体效果，请查看后面的场景案例：[淡入效果（可视窗口 + 延迟处理）](http://www.fedlife.cn/demo/jquery/jquery-imglazy/fadeIn-viewport-timeout.html)
+关于该特性的具体效果，请查看后面的场景案例：[淡入效果（可视窗口 + 延迟处理）](//htmlpreview.github.io/?https://github.com/springlong/jquery-imglazy/blob/master/demo/fadeIn-viewport-timeout.html)
 
 ### 多次函数调用
 
@@ -112,7 +113,7 @@ $.imgLazy({ viewport: true, timeout: 20 });
 
 而后续的每次调用，则表示对当前页面需要进行懒加载的图片进行重新初始化——即解除之前的行为绑定，并根据第一次调用传递的参数情况进行重新绑定。
 
-关于该特性的具体效果，请查看后面的场景案例：[淡入效果（多次函数调用）](http://www.fedlife.cn/demo/jquery/jquery-imglazy/fadeIn-more-than-once.html)
+关于该特性的具体效果，请查看后面的场景案例：[淡入效果（多次函数调用）](//htmlpreview.github.io/?https://github.com/springlong/jquery-imglazy/blob/master/demo/fadeIn-more-than-once.html)
 
 ### 事件绑定的自我解除
 
