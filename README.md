@@ -67,7 +67,7 @@ $.imgLazy();  //使用默认参数进行处理
 
 {
     selector: "img[data-src]",  // 懒加载图片的选择器查询字符串。
-    src: "data-src",  			// 懒加载图片的真实url的保存属性。
+    src: "data-src",            // 懒加载图片的真实url的保存属性。
     effect: "none",             // 用来指定加载图片时的效果，默认为"none"——即无效果，另外"fadeIn"——表示淡入效果。
     threshold: 0,               // 设置一个阀值，用来指定可以提前加载多少范围之外的图片。默认为0——不提前加载。当viewport为true时，表示前后两个方向都会做提前加载。
     thresholdBefore: 0,         // 设置一个阀值，当viewport为true时，用来单独指定可以向前加载多少范围之外的图片。默认为0——不提前加载。
